@@ -6,6 +6,9 @@ on:
       - main
   schedule:
     - cron: '0 0 * * *'
+permissions:
+  id-token: write
+  contents: write
 
 jobs:
   commit:
