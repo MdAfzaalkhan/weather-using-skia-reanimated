@@ -3,7 +3,7 @@ name: Daily Random Commit
 on:
   push:
     branches:
-      - main
+      - mainn
   schedule:
     - cron: '0 0 * * *'
 
