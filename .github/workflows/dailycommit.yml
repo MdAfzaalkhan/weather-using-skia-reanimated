@@ -27,10 +27,5 @@ jobs:
           git config --local user.name "MdAfzaalkhan"
           git add random_change.txt
           git commit -m "Daily random commit $i"
-          done
-
-      - name: Commit changes
-        run: |
-          git config --local user.email "afzaalk137@gmail.com"
-          git config --local user.name "MdAfzaalkhan"
           git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/MdAfzaalkhan/weather-using-skia-reanimated.git HEAD:main
+          done
