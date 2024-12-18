@@ -3,7 +3,7 @@ name: Daily Random Commit
 on:
   push:
     branches:
-      - mainn
+      - main
   schedule:
     - cron: '0 0 * * *'
 
@@ -18,14 +18,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Make random change
+      - name: Make random changes
         run: |
-          echo "Random change at $(date)" >> random_change.txt
+          RANDOM_COMMITS=$((RANDOM % 11))
+          for i in $(seq 1 $RANDOM_COMMITS); do
+          echo "Random change $i at $(date)" >> random_change.txt
+          git config --local user.email "afzaalk137@gmail.com"
+          git config --local user.name "MdAfzaalkhan"
+          git add random_change.txt
+          git commit -m "Daily random commit $i"
+          done
 
       - name: Commit changes
         run: |
           git config --local user.email "afzaalk137@gmail.com"
           git config --local user.name "MdAfzaalkhan"
-          git add random_change.txt
-          git commit -m "Daily random commit"
           git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/MdAfzaalkhan/weather-using-skia-reanimated.git HEAD:main
