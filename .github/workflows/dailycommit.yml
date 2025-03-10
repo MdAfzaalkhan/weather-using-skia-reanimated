@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - mainnnnnn
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
 
 permissions:
   id-token: write
